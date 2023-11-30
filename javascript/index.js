@@ -98,22 +98,11 @@ async function makeBroccoli() {
   let insertStepToElement = (selector, step) =>
     (document.querySelector(selector).innerHTML += `<li>${step}</li>`);
 
-  let step0 = await obtainInstruction("broccoli", 0);
-  console.log(step0);
-  insertStepToElement("#broccoli", step0);
-  let step1 = await obtainInstruction("broccoli", 1);
-  console.log(step1);
-  insertStepToElement("#broccoli", step1);
-  let step2 = await obtainInstruction("broccoli", 2);
-  insertStepToElement("#broccoli", step2);
-  let step3 = await obtainInstruction("broccoli", 3);
-  insertStepToElement("#broccoli", step3);
-  let step4 = await obtainInstruction("broccoli", 4);
-  insertStepToElement("#broccoli", step4);
-  let step5 = await obtainInstruction("broccoli", 5);
-  insertStepToElement("#broccoli", step5);
-  let step6 = await obtainInstruction("broccoli", 6);
-  insertStepToElement("#broccoli", step6);
+  for (let i = 0; i < broccoli.length; i++) {
+    let currStep = await obtainInstruction("broccoli", i);
+    insertStepToElement("#broccoli", currStep);
+  }
+
   insertStepToElement("#broccoli", `Broccoli is ready!`);
   document.querySelector("#broccoliImg").removeAttribute("hidden");
 }
